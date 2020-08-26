@@ -28,10 +28,10 @@ fn main() {
     let mut rng = rand::thread_rng();
     for _ in 0..BOIDS_NUM {
         boids.push(Boid::new(
-            rng.gen_range(0, WIDTH as i32),
-            rng.gen_range(0, HEIGHT as i32),
-            rng.gen_range(-2.0, 2.0),
-            rng.gen_range(-2.0, 2.0),
+            rng.gen_range(0.0, WIDTH as f64),
+            rng.gen_range(0.0, HEIGHT as f64),
+            rng.gen_range(0.1, 1.0),
+            rng.gen_range(0.1, 1.0),
         ));
     }
 
@@ -61,6 +61,6 @@ fn main() {
             b.step(&prev_boids, WIDTH, HEIGHT);
         }
 
-        std::thread::sleep(std::time::Duration::new(0, 50_000_000));
+        std::thread::sleep(std::time::Duration::new(0, 10_000_000));
     }
 }
